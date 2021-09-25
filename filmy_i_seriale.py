@@ -1,4 +1,5 @@
 import random
+from operator import itemgetter
 
 class Movie:
     def __init__(self, title, released, genre, views) :
@@ -6,26 +7,34 @@ class Movie:
         self.released=released
         self.genre=genre
         self.views=views
+    
+   # def play(self, view=1):
+    #   visual=input("Proszę podać tytuł filmu lub serialu ")
+    #   if visual in Movies_and_series:  
+    #     print (self.views += view) #podkreśla '+=' i chce zamiast tego nawias - czemu?
+    #   else:
+      #   print "Wystąpił błąd")
 
 class Series (Movie):
     def __init__(self, season, episode, *args, **kwargs): 
         super().__init__(*args, **kwargs)
         self.season=season
         self.episode=episode
-
-self.views=0
-
-def play(self, view=1):
-    self.views+=view
-
-if Series:
-    print (title + 'S'+ f'{val:02}' + 'E'+ f'{val:02}'.format(season, episode))
-else:
-    print(title + released)
+    
+def showing_titles():
+    visual=input("Proszę podać tytuł filmu lub serialu ")
+    if visual in Series.title: #nie rozumiem dlaczego Series nie ma atrybutu title
+        return (title + 'S'+ f'{val:02}' + 'E'+ f'{val:02}'.format(season, episode)) #nie jestem pewna tego formatowania
+    elif visual in Movie.title:
+        return(self.title + self.released)
+    else:
+        return ('''Brak pozycji na liście. Sprawdź czy nie zrobiłeś literówki
+        UWAGA: wielkość liter ma znaczenie''')
+showing_titles()
 
 Movies_and_series= [
         Movie(
-            title="Czasem słońce czasem deszcz",
+            title="Czasem słońce, czasem deszcz",
             released=2001,
             genre="bollywood",
             views=620
@@ -79,32 +88,36 @@ Movies_and_series= [
             episode=99
         )
     ]
-
-def get_movies(): 
-   print(sorted(Movies))
+'''
+#def get_movies(): 
+ #   print(Movies_and_series.sort(key=Movie)) traktuje 'movie' jak title
+#get_movies()
 
 def get_series():
-    print(sorted(Series))
+    print(Movies_and_series.sort(key=itemgetter("Series"))) #nie ma takiego atrybutu jak series
+get_series()
 
 def search():
-    visual=string(input("Proszę podać nazwę filmu lub serialu"))
-    for c in title:
-        visual = title,key=lambda c: c.title
-        print(title + released)    
+  #  showing_title()
+search()
 
 def generate_views():
-    for i in range len(Movies_and_series):
-        print(title + views=random.randint(1,100))
+    i = random.randint(len(Movies_and_series))
+    print(title[i] + views=random.randint(1,100))
+generate_views()
 
-def multi_views():
-    for i in range (1,10):
-        generate_views
-
-def top_titles:
+def multi_views(): #wydaje mi się, że to będzie działać jeśli generate_views będzie poprawna
+    for i in range (10):
+        generate_views()
+multi_views()
+'''
+def top_titles():
     while True:
        try:
-           i=int(input("Proszę podać ilość filmów lub seriali do wyświeltenia")
-       break
-    except ValueError:
-       print("Ups!  To nie jest odpowiednia liczba.  Spróbuj jeszcze raz...")
-    print(Movies_and_series[i])
+           i=int(input("Proszę podać ilość filmów lub seriali do wyświeltenia "))
+           for i in range(len(Movies_and_series)): #bez tej pętli wypisywał miejsce w pamięci filmu o indexie i    
+               print(title)#title jest niezdefiniowane a w self.title self jest niezdefiniowane
+           break
+       except ValueError:
+            print("Ups!  To nie jest odpowiednia liczba.  Spróbuj jeszcze raz...")
+top_titles() 
